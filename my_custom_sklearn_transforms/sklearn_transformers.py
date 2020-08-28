@@ -13,12 +13,9 @@ class DropColumns(BaseEstimator, TransformerMixin):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
         # Retornamos um novo dataframe sem as colunas indesejadas
-        return data.drop(labels=self.columns, axis='columns')
-
-Class Transformacion(BaseEstimator, TransformerMixin):
-    
-    def fit(self, X, y=None):
-        return self
+        data.drop(labels=self.columns, axis='columns')
+        df_data_3 = transform_df(data)
+        return df_data_3
     
     def norm(self, X):
         from sklearn.preprocessing import Normalizer
@@ -44,7 +41,7 @@ Class Transformacion(BaseEstimator, TransformerMixin):
 
         return df_data_3
 
-    def transform(self, X):
+    def transform_df(self, X):
         from sklearn.impute import SimpleImputer
         # Crear un objeto si para llenar con ceros
         si_cero = SimpleImputer(
